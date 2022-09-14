@@ -1,18 +1,20 @@
-# from django.urls  import path
-# from . import views
+from django.urls  import path
+from articles.api.views import *
+
 
 # urlpatterns = [
-#      path('articles', views.ArticleView.as_view()),
-#      path('create', views.ArticleView.as_view()),
-#      path('<pk>', views.ArticleView.as_view()),
-#      path('<pk>/update/', views.ArticleView.as_view()),
-#      path('<pk>/delete/', views.ArticleView.as_view())
-#   ]
-from articles.api.views import ArticleViewSet
-#from articles.api.views import ArticleView
+#        path('articles', ArticleListView.as_view() name=""),
+#        path('xyz', ArticleCreateView.as_view()),
+#        #path('create', ArticleCreateView),
+#        path('<pk>', ArticleDetailView.as_view()),
+#        path('<pk>/update/', ArticleUpdateView),
+#        path('<pk>/delete/', ArticleDeleteView)
+#     ]
+
+from articles.api import  views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'', ArticleViewSet, basename='articles')
+router.register(r'', views.ArticleViewSet, basename='articles')
 urlpatterns = router.urls
 
